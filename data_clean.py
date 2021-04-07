@@ -6,12 +6,12 @@ print(set(df["Role of champion"]))
 #%%
 df.drop([94],inplace=True)
 # %%
-# df["Role of champion"].replace(
-#     to_replace=['role-top', 'role-jungle', 'role-support', 'role-mid', 'role-bot'],
-#     value=[1, 2, 5, 3, 4],
-#     inplace=True
-# )
-# print(set(df["Role of champion"]))
+df["Role of champion"].replace(
+    to_replace=['role-top', 'role-jungle', 'role-support', 'role-mid', 'role-bot'],
+    value=[1, 2, 5, 3, 4],
+    inplace=True
+)
+print(set(df["Role of champion"]))
 
 df = pd.get_dummies(df, columns=["Role of champion"], drop_first=True)
 df.head()
@@ -39,8 +39,6 @@ df["Base AS"] = df["Base AS"].astype("float")
 df.dtypes
 # %%
 df.dtypes
-# %%
-df.to_csv('cleaned_champion_data.csv')
 # %%
 df[["Role of champion_role-jungle", "Role of champion_role-mid", "Role of champion_role-support", "Role of champion_role-top","Win rate of champion","Pick rate of champion", "Move. speed", "Attack range", "Base AS", "AS ratio"]].to_csv("regression_data.csv")
 # %%
